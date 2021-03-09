@@ -1,0 +1,62 @@
+@startuml
+
+	'########## Classes ##########
+
+		'########## Asbtract Classes ##########
+
+			Abstract Class Controller<Entity, Dto<Entity>> {
+				- requiredRoles : Role[]
+			}
+			Abstract Class Service<Entity, Dto<Entity>> {}
+			Abstract Class Validator<Dto> {}
+			Abstract Class Mapper<Entity, Dto<Entity>> {}
+			Abstract Class Repository<Entity> {}
+			Abstract Class ExternalService {}
+
+		'########## Concrete Classes ##########
+
+			Class IstanzaController {}
+			Class IstanzaService {}
+			Class IstanzaRepository {}
+			Class IstanzaMapper {}
+			Class IstanzaValidator {}
+
+			Class SoggettoService {}
+			Class AuthService {}
+			Class RestTemplate {}
+
+	'########## Relations ##########
+
+		'########## Controller ##########
+
+			Controller -- Service : service
+			Controller -- Validator : validator
+			Controller -left- AuthService : authentication
+
+		'########## Service ##########
+
+			Service -- Repository : repository
+			Service -- Mapper : mapper
+
+		'########## IS-A ##########
+
+			AuthService .up.|> ExternalService
+			IstanzaService .left.|> Service
+			IstanzaRepository .up.|> Repository
+			IstanzaMapper .up.|> Mapper
+			IstanzaValidator .up.|> Validator
+			SoggettoService .up.|> ExternalService
+			IstanzaController .up.|> Controller
+
+		'########## Others ##########
+
+			ExternalService -left- RestTemplate
+			SoggettoService -- IstanzaService
+
+		'########## Adjustments (HIDDEN) ##########
+
+			SoggettoService -[hidden]down- Service
+			IstanzaController -[hidden]right- Validator
+
+@enduml
+-txmi:star

@@ -1,0 +1,131 @@
+@startuml
+
+'########## Legenda ########## 
+
+	note as legenda
+		* digitabile ed obbligatorio\n
+		^ digitabile non obbligatorio\n
+		** generato dal sistema\n
+		*** combobox\n
+		**** checkbox\n
+	end note
+
+'########## Classi ########## 
+
+	'########## Istanza ########## 
+
+		Interface Entity {
+			- getId() : Long
+			- setId(Long id) : void
+		}
+		Abstract Class Istanza {
+			- qualitaRichiedente*** : QualitaRichiedente
+			- soggettoPF : Soggetto
+		}
+		Class IstanzaDepositoCauzionale {}
+		Class IstanzaDepositoGiudiziario{}
+		Class IstanzaDepositoAmministrativo {}
+		Class IstanzaRestituzioneDeposito {}
+
+	'########## Altre ########## 
+
+		Class Richiesta {
+			- numero** : Long 
+			- data* : LocalDateTime 
+		}
+		Class Protocollo {
+			- numero** : Long
+			- data* : LocalDateTime 
+		}
+		Class Rts {
+			- id** : Long
+		}
+		Class Ente {
+			- soggettoPF : Soggetto
+		}
+		Class Deposito {
+			- causale* : String
+			- importo* : BigDecimal
+		}
+		Class Soggetto {}
+
+		Class Versante {
+			- soggetto : Soggetto
+		}
+
+		Class AutoritaOrdinante {
+			- soggettoPG : Soggetto
+		}
+
+		Class SoggettoUlteriore {
+			- soggettoNonIdentificato**** : boolean
+			- cf^ : String
+			- cognome* : String
+			- nome* : String
+		}
+
+		Class Depositante {
+			- soggettoPG : Soggetto
+		}
+
+		Class AutoritaEspropriante {
+			- coincidenteConDepositante**** : boolean
+			- soggettoPG : Soggetto
+		}
+
+		Class Opera {
+			- descrizione* : Opera
+			- regione*** : Regione
+		}
+
+		Class Bene {
+			datiCatastali* : Catasto
+			proprietariCatastali* : Set<Soggetto>
+		}
+
+'########## Relazioni ########## 
+
+	'########## Istanza ##########
+
+		Istanza -left- Richiesta : datiRichiesta
+		Istanza -left- Protocollo : datiProtoccollo
+		Istanza -left- Deposito : datiDeposito
+		
+		Istanza -right- Soggetto : richiedente
+		Istanza -right- Soggetto : proprietario
+		Istanza -right- Rts : inoltro
+
+		'########## IS-A ########## 
+
+		Istanza -up-|> Entity
+		Istanza <|-down- IstanzaDepositoAmministrativo
+		Istanza <|-down- IstanzaDepositoCauzionale
+		Istanza <|-down- IstanzaDepositoGiudiziario
+		Istanza <|-down- IstanzaRestituzioneDeposito
+
+	'########## Istanza Deposito Giudiziario ########## 
+
+		IstanzaDepositoGiudiziario -- Versante
+		IstanzaDepositoGiudiziario -- AutoritaOrdinante
+		IstanzaDepositoGiudiziario -- SoggettoUlteriore
+
+		'########## IS-A ########## 
+
+		Soggetto -- Versante
+		Soggetto -- AutoritaOrdinante
+		Soggetto -- SoggettoUlteriore
+
+	'########## Istanza Deposito Amministrativo ########## 
+
+		IstanzaDepositoAmministrativo -- Depositante
+		IstanzaDepositoAmministrativo -- AutoritaEspropriante
+		IstanzaDepositoAmministrativo -- Opera
+		IstanzaDepositoAmministrativo -- Bene
+
+		'########## IS-A ########## 
+
+		Soggetto -- Depositante
+		Soggetto -- AutoritaEspropriante
+
+@enduml
+-txmi:star

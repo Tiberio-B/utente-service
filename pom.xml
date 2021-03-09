@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>it.sogei.svildep</groupId>
-    <artifactId>inserimento-istanze</artifactId>
+    <artifactId>istanza-service</artifactId>
     <version>1.0</version>
     <name>inserimento-istanze</name>
     <description>Servizi di inserimento istanza costituzione di deposito</description>
