@@ -5,6 +5,8 @@ import it.sogei.svildep.istanzaservice.model.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 public abstract class Istanza implements Entity {
@@ -22,6 +24,8 @@ public abstract class Istanza implements Entity {
     private Protocollo datiProtocollo;
 
     private Rts rtsInoltro;
+
+    private Set<Documento> allegati;
 
     private Stato stato = Stato.IN_BOZZA;
 

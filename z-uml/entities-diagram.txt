@@ -3,11 +3,11 @@
 '########## Legenda ########## 
 
 	note as legenda
-		* digitabile ed obbligatorio\n
-		^ digitabile non obbligatorio\n
-		** generato dal sistema\n
-		*** combobox\n
-		**** checkbox\n
+		digitabile ed obbligatorio*
+		digitabile non obbligatorio^
+		generato dal sistema**
+		combobox***
+		checkbox****
 	end note
 
 '########## Classi ########## 

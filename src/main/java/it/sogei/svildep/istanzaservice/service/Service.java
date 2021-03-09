@@ -1,6 +1,7 @@
 package it.sogei.svildep.istanzaservice.service;
 
 import it.sogei.svildep.istanzaservice.dto.Dto;
+import it.sogei.svildep.istanzaservice.exception.SvildepException;
 import it.sogei.svildep.istanzaservice.mapper.Mapper;
 import it.sogei.svildep.istanzaservice.model.Entity;
 import it.sogei.svildep.istanzaservice.repository.Repository;
@@ -21,7 +22,7 @@ public abstract class Service<E extends Entity, D extends Dto<E>> {
 
     public List<D> getAll() { return mapper.convertEntityToDto(repository.getAll()); }
 
-    public abstract void prepareInsert(D dto);
+    public abstract void prepareInsert(D dto) throws SvildepException;
 
     public D insert(D dto) { return mapper.convertEntityToDto(repository.insert(mapper.convertDtoToEntity(dto))); }
 

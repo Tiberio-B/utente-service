@@ -9,14 +9,15 @@ import org.springframework.http.HttpStatus;
 @Getter
 @Setter
 @NoArgsConstructor
+public
 class SvildepException extends Exception {
 
     private MessageDto messageDto;
 
-    SvildepException(MessageDto messageDto) {
+    public SvildepException(MessageDto messageDto) {
         super(messageDto.getContent());
         setMessageDto(messageDto);
     }
 
-    SvildepException(String message, HttpStatus status) { this(new MessageDto(message, status)); }
+    public SvildepException(String message, HttpStatus status) { this(new MessageDto(message, status)); }
 }

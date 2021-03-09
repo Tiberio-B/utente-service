@@ -1,7 +1,6 @@
 package it.sogei.svildep.istanzaservice.model.istanza;
 
 import it.sogei.svildep.istanzaservice.model.Deposito;
-import it.sogei.svildep.istanzaservice.model.Documento;
 import it.sogei.svildep.istanzaservice.model.Soggetto;
 import it.sogei.svildep.istanzaservice.model.pagamento.ModalitaPagamento;
 
@@ -18,8 +17,6 @@ public class IstanzaRestituzioneDeposito extends Istanza {
     private Boolean pagamentoASoggettiDeposito;
 
     private ModalitaPagamento modalitaPagamento;
-
-    private Set<Documento> allegati;
 
     IstanzaRestituzioneDeposito(Soggetto richiedente, Deposito datiDeposito) {
         super(richiedente, datiDeposito, Categoria.DEPOSITO_AMMINISTRATIVO);

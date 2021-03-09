@@ -5,6 +5,8 @@ import it.sogei.svildep.istanzaservice.model.istanza.Istanza;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 public abstract class IstanzaDto extends Dto<Istanza> {
@@ -22,6 +24,8 @@ public abstract class IstanzaDto extends Dto<Istanza> {
     private RtsDto rtsInoltro;
 
     private String stato;
+
+    private Set<DocumentoDto> allegati;
 
     public IstanzaDto(SoggettoDto richiedente, DepositoDto datiDeposito, String categoriaDeposito) {
         this.richiedente = richiedente;

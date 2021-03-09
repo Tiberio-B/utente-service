@@ -15,6 +15,7 @@ public class DataLoader implements ApplicationRunner {
     }
     
     private static void initIstanze() {
+
     }
 
     public void run(ApplicationArguments args) {

@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("istanza")
 public class IstanzaController extends Controller<Istanza, IstanzaDto> {
 
-    @Autowired
-    IstanzaController(IstanzaService service, IstanzaValidator validator) {
-        super(service, validator, Role.OPERATORE_RTS_ROLE);
+    IstanzaController(IstanzaService istanzaService, IstanzaValidator istanzaValidator) {
+        super(istanzaService, istanzaValidator, Role.OPERATORE_RTS_ROLE);
     }
 }

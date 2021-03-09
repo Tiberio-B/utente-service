@@ -3,6 +3,7 @@ package it.sogei.svildep.istanzaservice.controller;
 import it.sogei.svildep.istanzaservice.dto.Dto;
 import it.sogei.svildep.istanzaservice.exception.AuthorizationException;
 import it.sogei.svildep.istanzaservice.exception.BindingException;
+import it.sogei.svildep.istanzaservice.exception.SvildepException;
 import it.sogei.svildep.istanzaservice.model.Entity;
 import it.sogei.svildep.istanzaservice.model.Role;
 import it.sogei.svildep.istanzaservice.service.Service;
@@ -32,20 +33,20 @@ public class Controller<E extends Entity, D extends Dto<E>> {
     }
 
     @GetMapping
-    public ResponseEntity<List<D>> list(@RequestHeader("authorization") String token) throws AuthorizationException {
+    public ResponseEntity<List<D>> list(@RequestHeader("authorization") String token) throws SvildepException {
         authService.getAuthorizedUser(token, requiredRoles);
         return ResponseEntity.ok().body(service.getAll());
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<D> get(@RequestHeader("authorization") String token, @PathVariable Long id) throws AuthorizationException {
+    public ResponseEntity<D> get(@RequestHeader("authorization") String token, @PathVariable Long id) throws SvildepException {
         authService.getAuthorizedUser(token, requiredRoles);
         D dto = service.get(id);
         return ResponseEntity.status(dto == null? HttpStatus.NOT_FOUND : HttpStatus.OK).body(dto);
     }
 
     @PostMapping
-    public ResponseEntity<D> insert(@RequestHeader("authorization") String token, @RequestBody D requestDto, BindingResult bindingResult) throws AuthorizationException, BindingException {
+    public ResponseEntity<D> insert(@RequestHeader("authorization") String token, @RequestBody D requestDto, BindingResult bindingResult) throws SvildepException {
         authService.getAuthorizedUser(token, requiredRoles);
         validate(requestDto, bindingResult);
         service.prepareInsert(requestDto);
@@ -54,7 +55,7 @@ public class Controller<E extends Entity, D extends Dto<E>> {
     }
 
     @PutMapping
-    public ResponseEntity<D> update(@RequestHeader("authorization") String token, @RequestBody D requestDto, BindingResult bindingResult) throws AuthorizationException, BindingException {
+    public ResponseEntity<D> update(@RequestHeader("authorization") String token, @RequestBody D requestDto, BindingResult bindingResult) throws SvildepException {
         authService.getAuthorizedUser(token, requiredRoles);
         validate(requestDto, bindingResult);
         boolean created = service.update(requestDto);
@@ -62,7 +63,7 @@ public class Controller<E extends Entity, D extends Dto<E>> {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<D> delete(@RequestHeader("authorization") String token, @PathVariable Long id) throws AuthorizationException {
+    public ResponseEntity<D> delete(@RequestHeader("authorization") String token, @PathVariable Long id) throws SvildepException {
         authService.getAuthorizedUser(token, requiredRoles);
         D dto = service.delete(id);
         return ResponseEntity.status(dto == null? HttpStatus.NOT_FOUND : HttpStatus.OK).body(dto);
