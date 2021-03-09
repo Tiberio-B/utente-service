@@ -2,8 +2,10 @@ package it.sogei.svildep.istanzaservice.validator;
 
 import it.sogei.svildep.istanzaservice.dto.istanza.IstanzaDto;
 import it.sogei.svildep.istanzaservice.dto.MessageDto;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 
+@Component
 public class IstanzaValidator extends DtoValidator<IstanzaDto> {
 
     @Override

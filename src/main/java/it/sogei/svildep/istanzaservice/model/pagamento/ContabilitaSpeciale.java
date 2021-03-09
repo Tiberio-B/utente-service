@@ -1,12 +1,15 @@
 package it.sogei.svildep.istanzaservice.model.pagamento;
 
-import lombok.Builder;
-import lombok.Data;
+
+import lombok.Getter;
+import lombok.Setter;
+
 
 import java.time.LocalDate;
 
-@Data
-@Builder
+@Getter
+@Setter
+
 public class ContabilitaSpeciale extends ModalitaPagamento {
 
     private String sezioneTesoreria;

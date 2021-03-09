@@ -1,17 +1,17 @@
 package it.sogei.svildep.istanzaservice.dto;
 
 import it.sogei.svildep.istanzaservice.model.Protocollo;
-import lombok.Builder;
-import lombok.Data;
+
+import lombok.Getter;
+import lombok.Setter;
+
 
 import java.time.LocalDateTime;
 
-@Data
-@Builder
+@Getter
+@Setter
 public class ProtocolloDto extends Dto<Protocollo> {
 
-    private Long id;
-
-    private Long numero;
-    private LocalDateTime data;
+    private String numero;
+    private String data;
 }

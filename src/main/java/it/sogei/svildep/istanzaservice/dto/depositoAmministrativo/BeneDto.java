@@ -4,13 +4,16 @@ import it.sogei.svildep.istanzaservice.dto.CatastoDto;
 import it.sogei.svildep.istanzaservice.dto.Dto;
 import it.sogei.svildep.istanzaservice.dto.SoggettoDto;
 import it.sogei.svildep.istanzaservice.model.istanza.depositoAmministrativo.Bene;
-import lombok.Builder;
-import lombok.Data;
+
+import lombok.Getter;
+import lombok.Setter;
+
 
 import java.util.Set;
 
-@Data
-@Builder
+@Getter
+@Setter
+
 public class BeneDto extends Dto<Bene> {
 
     private CatastoDto datiCatastali;

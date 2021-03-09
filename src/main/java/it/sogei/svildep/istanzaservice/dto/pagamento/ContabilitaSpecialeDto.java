@@ -2,11 +2,14 @@ package it.sogei.svildep.istanzaservice.dto.pagamento;
 
 import it.sogei.svildep.istanzaservice.dto.Dto;
 import it.sogei.svildep.istanzaservice.model.pagamento.ContabilitaSpeciale;
-import lombok.Builder;
-import lombok.Data;
 
-@Data
-@Builder
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+
 public class ContabilitaSpecialeDto extends Dto<ContabilitaSpeciale> {
 
     private String sezioneTesoreria;

@@ -3,11 +3,14 @@ package it.sogei.svildep.istanzaservice.dto.depositoAmministrativo;
 import it.sogei.svildep.istanzaservice.dto.DepositoDto;
 import it.sogei.svildep.istanzaservice.dto.istanza.IstanzaDto;
 import it.sogei.svildep.istanzaservice.dto.SoggettoDto;
-import lombok.Builder;
-import lombok.Data;
 
-@Data
-@Builder
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+
 public class IstanzaDepositoAmministrativoNoEsproprioDto extends IstanzaDto {
 
     private SoggettoDto versante;

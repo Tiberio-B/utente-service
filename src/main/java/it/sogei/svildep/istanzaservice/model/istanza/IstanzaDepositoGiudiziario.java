@@ -10,6 +10,6 @@ public class IstanzaDepositoGiudiziario extends Istanza {
     private Soggetto soggettoUlteriore;
 
     IstanzaDepositoGiudiziario(Soggetto richiedente, Deposito datiDeposito) {
-        super(richiedente, datiDeposito, CategoriaDeposito.DEPOSITO_GIUDIZIARIO);
+        super(richiedente, datiDeposito, Categoria.DEPOSITO_GIUDIZIARIO);
     }
 }

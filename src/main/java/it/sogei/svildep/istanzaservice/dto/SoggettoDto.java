@@ -1,14 +1,15 @@
 package it.sogei.svildep.istanzaservice.dto;
 
 import it.sogei.svildep.istanzaservice.model.Soggetto;
-import lombok.Builder;
-import lombok.Data;
 
-@Data
-@Builder
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+
 public class SoggettoDto extends Dto<Soggetto> {
-
-    private Long id;
 
     private String nome;
     private String cognome;

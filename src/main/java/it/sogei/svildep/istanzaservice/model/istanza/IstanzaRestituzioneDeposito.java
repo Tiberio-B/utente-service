@@ -22,6 +22,6 @@ public class IstanzaRestituzioneDeposito extends Istanza {
     private Set<Documento> allegati;
 
     IstanzaRestituzioneDeposito(Soggetto richiedente, Deposito datiDeposito) {
-        super(richiedente, datiDeposito, CategoriaDeposito.DEPOSITO_AMMINISTRATIVO);
+        super(richiedente, datiDeposito, Categoria.DEPOSITO_AMMINISTRATIVO);
     }
 }

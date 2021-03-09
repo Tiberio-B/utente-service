@@ -2,6 +2,7 @@ package it.sogei.svildep.istanzaservice.mapper;
 
 import it.sogei.svildep.istanzaservice.dto.Dto;
 import it.sogei.svildep.istanzaservice.model.Entity;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,7 +9,7 @@ public class IstanzaDepositoCauzionale extends Istanza {
     private Soggetto enteRichiedente;
 
     IstanzaDepositoCauzionale(Soggetto richiedente, Deposito datiDeposito) {
-        super(richiedente, datiDeposito, CategoriaDeposito.DEPOSITO_CAUZIONALE);
+        super(richiedente, datiDeposito, Categoria.DEPOSITO_CAUZIONALE);
         if (super.getQualitaRichiedente() == QualitaRichiedente.ME_MEDESIMO) proprietario = richiedente;
     }
 }

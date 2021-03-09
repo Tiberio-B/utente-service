@@ -7,7 +7,7 @@ import it.sogei.svildep.istanzaservice.repository.IstanzaRepository;
 import it.sogei.svildep.istanzaservice.service.external.SoggettoService;
 
 @org.springframework.stereotype.Service
-public abstract class IstanzaService extends Service<Istanza, IstanzaDto> {
+public class IstanzaService extends Service<Istanza, IstanzaDto> {
 
     private final SoggettoService soggettoService;
 

@@ -1,11 +1,14 @@
 package it.sogei.svildep.istanzaservice.model.pagamento;
 
 import it.sogei.svildep.istanzaservice.model.geo.Indirizzo;
-import lombok.Builder;
-import lombok.Data;
 
-@Data
-@Builder
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+
 public class Vaglia extends ModalitaPagamento {
 
     private String cognomeDestinatario;

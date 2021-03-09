@@ -2,11 +2,14 @@ package it.sogei.svildep.istanzaservice.model;
 
 import it.sogei.svildep.istanzaservice.model.geo.Comune;
 import it.sogei.svildep.istanzaservice.model.geo.Provincia;
-import lombok.Builder;
-import lombok.Data;
 
-@Data
-@Builder
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+
 public class Catasto implements Entity {
 
     private Long id;

@@ -8,6 +8,6 @@ public class IstanzaDepositoVolontario extends Istanza {
     private Soggetto proprietario;
 
     IstanzaDepositoVolontario(Soggetto richiedente, Deposito datiDeposito) {
-        super(richiedente, datiDeposito, CategoriaDeposito.DEPOSITO_VOLONTARIO);
+        super(richiedente, datiDeposito, Categoria.DEPOSITO_VOLONTARIO);
     }
 }

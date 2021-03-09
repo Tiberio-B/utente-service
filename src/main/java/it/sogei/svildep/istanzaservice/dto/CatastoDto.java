@@ -1,11 +1,14 @@
 package it.sogei.svildep.istanzaservice.dto;
 
 import it.sogei.svildep.istanzaservice.model.Catasto;
-import lombok.Builder;
-import lombok.Data;
 
-@Data
-@Builder
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+
 public class CatastoDto extends Dto<Catasto> {
 
     private String tipo;

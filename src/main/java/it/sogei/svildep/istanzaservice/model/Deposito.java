@@ -1,12 +1,14 @@
 package it.sogei.svildep.istanzaservice.model;
 
-import lombok.Builder;
-import lombok.Data;
+
+
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
-@Data
-@Builder
+@Getter
+@Setter
 public abstract class Deposito implements Entity {
 
     private Long id;

@@ -1,6 +1,7 @@
 package it.sogei.svildep.istanzaservice.repository;
 
 import it.sogei.svildep.istanzaservice.model.Entity;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;

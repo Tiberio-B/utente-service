@@ -1,10 +1,13 @@
 package it.sogei.svildep.istanzaservice.model;
 
-import lombok.Builder;
-import lombok.Data;
 
-@Data
-@Builder
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+
 public class User implements Entity {
 
     private Long id;

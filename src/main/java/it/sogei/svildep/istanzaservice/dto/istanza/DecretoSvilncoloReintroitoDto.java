@@ -1,11 +1,18 @@
 package it.sogei.svildep.istanzaservice.dto.istanza;
 
-import it.sogei.svildep.istanzaservice.dto.Dto;
-import it.sogei.svildep.istanzaservice.model.istanza.DecretoSvilncoloReintroito;
-import lombok.Builder;
-import lombok.Data;
+import it.sogei.svildep.istanzaservice.dto.DepositoDto;
+import it.sogei.svildep.istanzaservice.dto.SoggettoDto;
 
-@Data
-@Builder
-public class DecretoSvilncoloReintroitoDto extends Dto<DecretoSvilncoloReintroito> {
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+
+public class DecretoSvilncoloReintroitoDto extends IstanzaDto {
+
+    DecretoSvilncoloReintroitoDto(SoggettoDto richiedente, DepositoDto datiDeposito) {
+        super(richiedente, datiDeposito, "DECRETO_SVINCOLO_REINTROITO");
+    }
 }

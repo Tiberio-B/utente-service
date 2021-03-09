@@ -2,11 +2,11 @@ package it.sogei.svildep.istanzaservice.dto.istanza;
 
 import it.sogei.svildep.istanzaservice.dto.*;
 import it.sogei.svildep.istanzaservice.model.istanza.Istanza;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@Builder
+@Getter
+@Setter
 public abstract class IstanzaDto extends Dto<Istanza> {
 
     private String qualitaRichiedente;
