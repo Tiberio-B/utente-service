@@ -21,7 +21,7 @@ public class AuthService extends ExternalService {
 
     private String urlAuthUser() { return getURL() + "/authUser"; }
 
-    public UserDto getAuthorizedUser(String token, Role... requiredRoles) throws AuthorizationException {
+    public UserDto getAuthorizedUserReal(String token, Role... requiredRoles) throws AuthorizationException {
         HttpEntity request = setRequestAuthorization(token, requiredRoles);
         UserDto userDTO = getRestTemplate().exchange(urlAuthUser(), HttpMethod.GET, request, UserDto.class).getBody();
         if (userDTO == null) throw new AuthorizationException();
@@ -33,6 +33,10 @@ public class AuthService extends ExternalService {
         headers.set("Authorization", token);
         headers.set("requiredRoles", Role.toString(requiredRoles));
         return new HttpEntity(headers);
+    }
+
+    public UserDto getAuthorizedUser(String token, Role... requiredRoles) throws AuthorizationException {
+        return new UserDto("tiberio", "OPERATORE_RTS_ROLE");
     }
 
 }

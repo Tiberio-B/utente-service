@@ -6,12 +6,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class ProtocolloDto extends Dto<Protocollo> {
+public class ProtocolloDto extends Dto {
 
     private String numero;
+    @NotBlank
     private String data;
 }

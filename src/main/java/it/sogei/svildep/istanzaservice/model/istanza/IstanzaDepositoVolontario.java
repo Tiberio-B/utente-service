@@ -1,13 +1,17 @@
 package it.sogei.svildep.istanzaservice.model.istanza;
 
-import it.sogei.svildep.istanzaservice.model.Deposito;
 import it.sogei.svildep.istanzaservice.model.Soggetto;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class IstanzaDepositoVolontario extends Istanza {
 
     private Soggetto proprietario;
 
-    IstanzaDepositoVolontario(Soggetto richiedente, Deposito datiDeposito) {
-        super(richiedente, datiDeposito, Categoria.DEPOSITO_VOLONTARIO);
+    public IstanzaDepositoVolontario() {
+        super();
+        this.setCategoriaDeposito(Categoria.DEPOSITO_VOLONTARIO);
     }
 }

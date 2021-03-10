@@ -9,12 +9,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 public class IstanzaDepositoVolontarioDto extends IstanzaDto {
 
     private SoggettoDto proprietario;
 
-    IstanzaDepositoVolontarioDto(SoggettoDto richiedente, DepositoDto datiDeposito) {
-        super(richiedente, datiDeposito, "DEPOSITO_VOLONTARIO");
+    public IstanzaDepositoVolontarioDto() {
+        super();
+        this.setCategoriaDeposito("DEPOSITO_VOLONTARIO");
     }
 }

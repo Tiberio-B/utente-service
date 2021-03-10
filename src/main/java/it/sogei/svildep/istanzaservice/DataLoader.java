@@ -1,18 +1,12 @@
 package it.sogei.svildep.istanzaservice;
 
-import it.sogei.svildep.istanzaservice.repository.IstanzaRepository;
+import it.sogei.svildep.istanzaservice.repository.IstanzaDepositoCauzionaleRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataLoader implements ApplicationRunner {
-	
-    private final IstanzaRepository istanzaRepository;
-
-    public DataLoader(IstanzaRepository istanzaRepository) {
-    	this.istanzaRepository = istanzaRepository;
-    }
     
     private static void initIstanze() {
 

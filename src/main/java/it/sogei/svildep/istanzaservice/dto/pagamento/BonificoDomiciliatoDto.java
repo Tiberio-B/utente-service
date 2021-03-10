@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class BonificoDomiciliatoDto extends Dto<BonificoDomiciliato> {
+public class BonificoDomiciliatoDto extends Dto {
 
     private String abi;
     private String cab;

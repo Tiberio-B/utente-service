@@ -18,7 +18,8 @@ public class IstanzaRestituzioneDeposito extends Istanza {
 
     private ModalitaPagamento modalitaPagamento;
 
-    IstanzaRestituzioneDeposito(Soggetto richiedente, Deposito datiDeposito) {
-        super(richiedente, datiDeposito, Categoria.DEPOSITO_AMMINISTRATIVO);
+    public IstanzaRestituzioneDeposito() {
+        super();
+        this.setCategoriaDeposito(Categoria.RESTITUZIONE_DEPOSITO);
     }
 }

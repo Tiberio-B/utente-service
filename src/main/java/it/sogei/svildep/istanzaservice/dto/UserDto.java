@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto extends Dto<User> {
+public class UserDto extends Dto {
 	
 	private String username;
 	private String role;

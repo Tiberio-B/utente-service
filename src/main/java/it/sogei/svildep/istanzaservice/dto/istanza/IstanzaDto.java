@@ -1,15 +1,16 @@
 package it.sogei.svildep.istanzaservice.dto.istanza;
 
 import it.sogei.svildep.istanzaservice.dto.*;
-import it.sogei.svildep.istanzaservice.model.istanza.Istanza;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Set;
 
 @Getter
 @Setter
-public abstract class IstanzaDto extends Dto<Istanza> {
+@NoArgsConstructor
+public abstract class IstanzaDto extends Dto {
 
     private String qualitaRichiedente;
 
@@ -32,4 +33,5 @@ public abstract class IstanzaDto extends Dto<Istanza> {
         this.datiDeposito = datiDeposito;
         this.categoriaDeposito = categoriaDeposito;
     }
+
 }

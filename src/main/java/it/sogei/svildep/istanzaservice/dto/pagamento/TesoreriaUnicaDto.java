@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class TesoreriaUnicaDto extends Dto<TesoreriaUnica> {
+public class TesoreriaUnicaDto extends Dto {
 
     private String tesoreria;
     private String numeroConto;

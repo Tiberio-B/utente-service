@@ -16,8 +16,8 @@ public class IstanzaDepositoAmministrativoNoEsproprio extends Istanza {
     private Soggetto versante;
     private Soggetto ulterioreSoggetto;
 
-    IstanzaDepositoAmministrativoNoEsproprio(Soggetto richiedente, Deposito datiDeposito) {
-        super(richiedente, datiDeposito, Categoria.DEPOSITO_AMMINISTRATIVO_NO_ESPROPRIO);
-        if (super.getQualitaRichiedente() == QualitaRichiedente.ME_MEDESIMO) versante = super.getRichiedente();
+    public IstanzaDepositoAmministrativoNoEsproprio() {
+        super();
+        this.setCategoriaDeposito(Categoria.DEPOSITO_AMMINISTRATIVO_NO_ESPROPRIO);
     }
 }

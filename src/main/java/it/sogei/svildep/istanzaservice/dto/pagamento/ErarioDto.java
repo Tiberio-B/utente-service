@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class ErarioDto extends Dto<Erario> {
+public class ErarioDto extends Dto {
 
     private String indicatore;
     private String secione;

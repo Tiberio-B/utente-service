@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class IndirizzoDto extends Dto<Indirizzo> {
+public class IndirizzoDto extends Dto {
 
     private NazioneDto nazione;
     private String provincia;

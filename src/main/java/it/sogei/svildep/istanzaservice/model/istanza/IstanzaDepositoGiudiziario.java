@@ -1,6 +1,5 @@
 package it.sogei.svildep.istanzaservice.model.istanza;
 
-import it.sogei.svildep.istanzaservice.model.Deposito;
 import it.sogei.svildep.istanzaservice.model.Soggetto;
 
 public class IstanzaDepositoGiudiziario extends Istanza {
@@ -9,7 +8,8 @@ public class IstanzaDepositoGiudiziario extends Istanza {
     private Soggetto autoritaOrdinante;
     private Soggetto soggettoUlteriore;
 
-    IstanzaDepositoGiudiziario(Soggetto richiedente, Deposito datiDeposito) {
-        super(richiedente, datiDeposito, Categoria.DEPOSITO_GIUDIZIARIO);
+    public IstanzaDepositoGiudiziario() {
+        super();
+        this.setCategoriaDeposito(Categoria.DEPOSITO_GIUDIZIARIO);
     }
 }

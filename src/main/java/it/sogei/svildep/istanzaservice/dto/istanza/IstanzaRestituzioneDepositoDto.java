@@ -20,7 +20,8 @@ public class IstanzaRestituzioneDepositoDto extends IstanzaDto {
 
     private String modalitaPagamento;
 
-    IstanzaRestituzioneDepositoDto(SoggettoDto richiedente, DepositoDto datiDeposito) {
-        super(richiedente, datiDeposito, "DEPOSITO_AMMINISTRATIVO");
+    public IstanzaRestituzioneDepositoDto() {
+        super();
+        this.setCategoriaDeposito("RESTITUZIONE_DEPOSITO");
     }
 }

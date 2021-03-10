@@ -5,6 +5,7 @@ import it.sogei.svildep.istanzaservice.dto.MessageDto;
 import it.sogei.svildep.istanzaservice.dto.SoggettoDto;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,6 +24,10 @@ public class RtsService extends ExternalService {
     public MessageDto inserimentoInFascicolo(Set<DocumentoDto> documenti) {
         HttpEntity<Set<DocumentoDto>> request = new HttpEntity<>(documenti);
         return getRestTemplate().exchange(getURL(), HttpMethod.POST, request, MessageDto.class).getBody();
+    }
+
+    public MessageDto inserimentoInFascicoloMock(Set<DocumentoDto> documenti) {
+        return new MessageDto("OK", HttpStatus.OK);
     }
 
 }

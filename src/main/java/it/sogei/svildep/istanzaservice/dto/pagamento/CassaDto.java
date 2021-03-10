@@ -6,11 +6,9 @@ import it.sogei.svildep.istanzaservice.model.pagamento.Cassa;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
-
-public class CassaDto extends Dto<Cassa> {
+public class CassaDto extends Dto {
 
     private String tesoreria;
     private String causale;

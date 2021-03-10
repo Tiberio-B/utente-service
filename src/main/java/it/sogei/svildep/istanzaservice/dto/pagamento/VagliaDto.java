@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class VagliaDto extends Dto<Vaglia> {
+public class VagliaDto extends Dto {
 
     private String cognomeDestinatario;
     private String nomeDestinatario;

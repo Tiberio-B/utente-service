@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-public abstract class Deposito implements Entity {
+public class Deposito implements Entity {
 
     private Long id;
 

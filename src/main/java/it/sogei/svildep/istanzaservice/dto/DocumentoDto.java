@@ -9,6 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class DocumentoDto extends Dto<Documento> {
+public class DocumentoDto extends Dto {
 
 }

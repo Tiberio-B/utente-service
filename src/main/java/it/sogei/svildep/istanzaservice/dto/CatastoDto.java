@@ -5,19 +5,26 @@ import it.sogei.svildep.istanzaservice.model.Catasto;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+
 
 @Getter
 @Setter
 
-public class CatastoDto extends Dto<Catasto> {
+public class CatastoDto extends Dto {
 
+    @NotBlank
     private String tipo;
+    @NotBlank
     private String sezioneUrbana;
+    @NotBlank
     private String foglio;
-
+    @NotBlank
     private String subalterno;
+    @NotBlank
     private String particella;
-
+    @NotBlank
     private String provincia;
+    @NotBlank
     private String comune;
 }

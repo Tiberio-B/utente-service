@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
 
 @Getter
 @Setter
-public abstract class Dto<E extends Entity> {
+public abstract class Dto {
 
 	public static final String INCOMPATIBLE_DTO = "Incompatible DTO";
 	public static final String INVALID_ID = "Invalid ID";

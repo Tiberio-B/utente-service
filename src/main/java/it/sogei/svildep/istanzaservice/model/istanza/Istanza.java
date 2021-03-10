@@ -1,7 +1,6 @@
 package it.sogei.svildep.istanzaservice.model.istanza;
 
 import it.sogei.svildep.istanzaservice.model.*;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,26 +13,17 @@ public abstract class Istanza implements Entity {
     private Long id;
 
     private QualitaRichiedente qualitaRichiedente;
+    private Categoria categoriaDeposito;
+    private Stato stato = Stato.IN_BOZZA;
 
     private Soggetto richiedente;
-
     private Deposito datiDeposito;
-    private Categoria categoriaDeposito;
 
     private Richiesta datiRichiesta;
     private Protocollo datiProtocollo;
 
     private Rts rtsInoltro;
-
     private Set<Documento> allegati;
-
-    private Stato stato = Stato.IN_BOZZA;
-
-    public Istanza(Soggetto richiedente, Deposito datiDeposito, Categoria categoriaDeposito) {
-        this.richiedente = richiedente;
-        this.datiDeposito = datiDeposito;
-        this.categoriaDeposito = categoriaDeposito;
-    }
 
     public enum Categoria {
 
@@ -42,8 +32,8 @@ public abstract class Istanza implements Entity {
         DEPOSITO_AMMINISTRATIVO,
         DEPOSITO_AMMINISTRATIVO_NO_ESPROPRIO,
         DEPOSITO_VOLONTARIO,
-        DECRETO_SVINCOLO_REINTROITO;
-
+        DECRETO_SVINCOLO_REINTROITO,
+        RESTITUZIONE_DEPOSITO;
     }
 
     public enum Stato {

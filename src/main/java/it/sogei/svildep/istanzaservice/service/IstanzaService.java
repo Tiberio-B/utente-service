@@ -3,31 +3,64 @@ package it.sogei.svildep.istanzaservice.service;
 import it.sogei.svildep.istanzaservice.dto.MessageDto;
 import it.sogei.svildep.istanzaservice.dto.istanza.IstanzaDto;
 import it.sogei.svildep.istanzaservice.exception.SvildepException;
-import it.sogei.svildep.istanzaservice.mapper.IstanzaMapper;
+import it.sogei.svildep.istanzaservice.mapper.Mapper;
 import it.sogei.svildep.istanzaservice.model.istanza.Istanza;
+import it.sogei.svildep.istanzaservice.repository.IRepository;
 import it.sogei.svildep.istanzaservice.repository.IstanzaRepository;
 import it.sogei.svildep.istanzaservice.service.external.RtsService;
 import it.sogei.svildep.istanzaservice.service.external.SoggettoService;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-@org.springframework.stereotype.Service
-public class IstanzaService extends Service<Istanza, IstanzaDto> {
+import java.util.List;
 
-    private final SoggettoService soggettoService;
-    private final RtsService rtsService;
+@Service
+@Getter
+@NoArgsConstructor
+public abstract class IstanzaService<I extends Istanza, D extends IstanzaDto> implements IService<I, D> {
 
-    IstanzaService(IstanzaRepository istanzaRepository, IstanzaMapper istanzaMapper, SoggettoService soggettoService, RtsService rtsService) {
-        super(istanzaRepository, istanzaMapper);
-        this.soggettoService = soggettoService;
-        this.rtsService = rtsService;
-    }
+    @Autowired
+    private IRepository<I> repository;
+    @Autowired
+    private Mapper<I, D> mapper;
+    @Autowired
+    private SoggettoService soggettoService;
+    @Autowired
+    private RtsService rtsService;
 
-    @Override
     public void prepareInsert(IstanzaDto istanza) throws SvildepException {
-        MessageDto soggettoResponse = soggettoService.verificaSoggetti(istanza.getRichiedente());
+        MessageDto soggettoResponse = soggettoService.verificaSoggettiMock(istanza.getRichiedente());
         if (soggettoResponse.isError()) throw new SvildepException(soggettoResponse);
 
-        MessageDto rtsResponse = rtsService.inserimentoInFascicolo(istanza.getAllegati());
+        MessageDto rtsResponse = rtsService.inserimentoInFascicoloMock(istanza.getAllegati());
         if (rtsResponse.isError()) throw new SvildepException(rtsResponse);
     }
 
+    @Override
+    public D get(Long id) { return mapper.convertEntityToDto(repository.get(id)); }
+
+    @Override
+    public List<D> getAll() { return mapper.convertEntityToDto(repository.getAll()); }
+
+    @Override
+    public D insert(D dto) { return mapper.convertEntityToDto(repository.insert(mapper.convertDtoToEntity(dto))); }
+
+    @Override
+    public boolean update(D dto) { return repository.update(mapper.convertDtoToEntity(dto)); }
+
+    @Override
+    public D delete(Long id) { return mapper.convertEntityToDto(repository.delete(id)); }
+
+    @Override
+    public D delete(D dto) { return mapper.convertEntityToDto(repository.delete(mapper.convertDtoToEntity(dto))); }
+
+    @Override
+    public boolean deleteEffective(D dto) { return repository.deleteEffective(mapper.convertDtoToEntity(dto)); }
+
+    @Override
+    public void drop() { repository.drop(); }
 }

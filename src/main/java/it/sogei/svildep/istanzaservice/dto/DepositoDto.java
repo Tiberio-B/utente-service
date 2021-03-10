@@ -5,11 +5,15 @@ import it.sogei.svildep.istanzaservice.model.Deposito;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+
 
 @Getter
 @Setter
-public abstract class DepositoDto extends Dto<Deposito> {
+public class DepositoDto extends Dto {
 
+    @NotBlank
     private String causale;
+    @NotBlank
     private String importo;
 }

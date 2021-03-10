@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class BonificoSepaDto extends Dto<BonificoSepa> {
+public class BonificoSepaDto extends Dto {
 
     private NazioneDto paeseAreaSepa;
     private String iban;
