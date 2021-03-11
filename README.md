@@ -1,3 +1,5 @@
+![plot](./class-diagram-service.png)
+
 # 2.1.36	Servizi Comuni Istanze e Provvedimento di svincolo/reintroito
 
 Servizi di inserimento istanza di costituzione e di restituzione e inserimento provvedimento di svincolo/reintroito
