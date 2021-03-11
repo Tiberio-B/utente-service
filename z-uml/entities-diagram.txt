@@ -12,44 +12,13 @@
 
 '########## classi ########## 
 
-	'########## Istanza ########## 
+package "Model" as mod #Motivation {
 
 		abstract class Istanza {
 			- qualitaRichiedente*** : QualitaRichiedente
 			- categoriaDeposito : Categoria
 			- stato : Stato
 		}
-
-	'########## Altre ########## 
-
-		class Richiesta {
-			- numero** : Long 
-			- data* : LocalDateTime 
-		}
-		class Protocollo {
-			- numero** : Long
-			- data* : LocalDateTime 
-		}
-		class Rts {
-			- id** : Long
-		}
-		class Deposito {
-			- causale* : String
-			- importo* : BigDecimal
-		}
-		class Opera {
-			- descrizione* : Opera
-			- regione*** : Regione
-		}
-
-		class Bene {
-			datiCatastali* : Catasto
-			proprietariCatastali* : Set<Soggetto>
-		}
-
-'########## Relazioni ########## 
-
-	'########## IS-A ########## 
 
 		class DepositoAmministrativo extends Istanza
 		class DepositoAmministrativoNoEsproprio extends Istanza
@@ -62,6 +31,48 @@
 			- modalitaPagamento : modalitaPagamento
 			- importoRichiesto : BigDecimal
 		}
+
+		class Soggetto {
+			- nome : String
+			- cognome : String
+			- cf : String
+			- sesso : Sesso
+			- nascita : Indirizzo
+			- partitaIva : String
+			- irreperibile : boolean
+			- relataNotificaSNR : Documento
+		}
+
+		class Deposito {
+			- causale* : String
+			- importo* : BigDecimal
+		}
+
+		class Richiesta {
+			- numero** : Long 
+			- data* : LocalDateTime 
+		}
+		class Protocollo {
+			- numero** : Long
+			- data* : LocalDateTime 
+		}
+		class Rts {
+			- id** : Long
+		}
+		
+		class Opera {
+			- descrizione* : Opera
+			- regione*** : Regione
+		}
+
+		class Bene {
+			datiCatastali* : Catasto
+			proprietariCatastali* : Set<Soggetto>
+		}
+		
+}
+
+'########## Relazioni ########## 
 
 	'########## Istanza ##########
 
