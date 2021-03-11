@@ -6,8 +6,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 @Component
-public class DtoValidator implements Validator {
-
+public abstract class DtoValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -19,6 +18,6 @@ public class DtoValidator implements Validator {
         if (obj instanceof Dto) {
             Dto dto = (Dto) obj;
         }
-        else errors.rejectValue("class", "notADto", Dto.NOT_A_DTO);
+        else errors.rejectValue("class", "notADto", "NOT_A_DTO");
     }
 }

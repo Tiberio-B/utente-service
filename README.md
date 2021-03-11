@@ -1,4 +1,5 @@
-![plot](./z-uml/class-diagram-service.png)
+![plot](./z-uml/class-diagram.png)
+![plot](./z-uml/entities-diagram.png)
 
 # 2.1.36	Servizi Comuni Istanze e Provvedimento di svincolo/reintroito
 

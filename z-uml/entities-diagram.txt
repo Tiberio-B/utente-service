@@ -10,122 +10,98 @@
 		checkbox****
 	end note
 
-'########## Classi ########## 
+'########## classi ########## 
 
 	'########## Istanza ########## 
 
-		Interface Entity {
-			- getId() : Long
-			- setId(Long id) : void
-		}
-		Abstract Class Istanza {
+		abstract class Istanza {
 			- qualitaRichiedente*** : QualitaRichiedente
-			- soggettoPF : Soggetto
+			- categoriaDeposito : Categoria
+			- stato : Stato
 		}
-		Class IstanzaDepositoCauzionale {}
-		Class IstanzaDepositoGiudiziario{}
-		Class IstanzaDepositoAmministrativo {}
-		Class IstanzaRestituzioneDeposito {}
 
 	'########## Altre ########## 
 
-		Class Richiesta {
+		class Richiesta {
 			- numero** : Long 
 			- data* : LocalDateTime 
 		}
-		Class Protocollo {
+		class Protocollo {
 			- numero** : Long
 			- data* : LocalDateTime 
 		}
-		Class Rts {
+		class Rts {
 			- id** : Long
 		}
-		Class Ente {
-			- soggettoPF : Soggetto
-		}
-		Class Deposito {
+		class Deposito {
 			- causale* : String
 			- importo* : BigDecimal
 		}
-		Class Soggetto {}
-
-		Class Versante {
-			- soggetto : Soggetto
-		}
-
-		Class AutoritaOrdinante {
-			- soggettoPG : Soggetto
-		}
-
-		Class SoggettoUlteriore {
-			- soggettoNonIdentificato**** : boolean
-			- cf^ : String
-			- cognome* : String
-			- nome* : String
-		}
-
-		Class Depositante {
-			- soggettoPG : Soggetto
-		}
-
-		Class AutoritaEspropriante {
-			- coincidenteConDepositante**** : boolean
-			- soggettoPG : Soggetto
-		}
-
-		Class Opera {
+		class Opera {
 			- descrizione* : Opera
 			- regione*** : Regione
 		}
 
-		Class Bene {
+		class Bene {
 			datiCatastali* : Catasto
 			proprietariCatastali* : Set<Soggetto>
 		}
 
 '########## Relazioni ########## 
 
+	'########## IS-A ########## 
+
+		class DepositoAmministrativo extends Istanza
+		class DepositoAmministrativoNoEsproprio extends Istanza
+		class DepositoCauzionale extends Istanza
+		class DepositoGiudiziario extends Istanza
+		class DepositoVolontario extends Istanza
+
+		class RestituzioneDeposito extends Istanza {
+			- pagamentoASoggettiDeposito : boolean
+			- modalitaPagamento : modalitaPagamento
+			- importoRichiesto : BigDecimal
+		}
+
 	'########## Istanza ##########
 
-		Istanza -left- Richiesta : datiRichiesta
-		Istanza -left- Protocollo : datiProtoccollo
-		Istanza -left- Deposito : datiDeposito
-		
-		Istanza -right- Soggetto : richiedente
-		Istanza -right- Soggetto : proprietario
-		Istanza -right- Rts : inoltro
+		Istanza -- Richiesta : datiRichiesta
+		Istanza -- Protocollo : datiProtoccollo
+		Istanza -- Deposito : datiDeposito
+		Istanza -- Soggetto : richiedente
+		Istanza -- Rts : rtsInoltro
 
-		'########## IS-A ########## 
+	'########## DepositoAmministrativo ########## 
 
-		Istanza -up-|> Entity
-		Istanza <|-down- IstanzaDepositoAmministrativo
-		Istanza <|-down- IstanzaDepositoCauzionale
-		Istanza <|-down- IstanzaDepositoGiudiziario
-		Istanza <|-down- IstanzaRestituzioneDeposito
+		DepositoAmministrativo -- Soggetto : depositante
+		DepositoAmministrativo -- Soggetto : autoritaEspropriante
+		DepositoAmministrativo -- Opera : opera
+		DepositoAmministrativo -- Bene : beneEspropriato
 
-	'########## Istanza Deposito Giudiziario ########## 
+	'########## DepositoAmministrativoNoEsproprio ########## 
 
-		IstanzaDepositoGiudiziario -- Versante
-		IstanzaDepositoGiudiziario -- AutoritaOrdinante
-		IstanzaDepositoGiudiziario -- SoggettoUlteriore
+		DepositoAmministrativoNoEsproprio -- Soggetto : versante
+		DepositoAmministrativoNoEsproprio -- Soggetto : ulterioreSoggetto
 
-		'########## IS-A ########## 
+	'########## DepositoCauzionale ########## 
 
-		Soggetto -- Versante
-		Soggetto -- AutoritaOrdinante
-		Soggetto -- SoggettoUlteriore
+		DepositoCauzionale -- Soggetto : proprietario
+		DepositoCauzionale -- Soggetto : enteRichiedente
 
-	'########## Istanza Deposito Amministrativo ########## 
+	'########## DepositoGiudiziario ########## 
 
-		IstanzaDepositoAmministrativo -- Depositante
-		IstanzaDepositoAmministrativo -- AutoritaEspropriante
-		IstanzaDepositoAmministrativo -- Opera
-		IstanzaDepositoAmministrativo -- Bene
+		DepositoGiudiziario -- Soggetto : versante
+		DepositoGiudiziario -- Soggetto : autoritaOrdinante
+		DepositoGiudiziario -- Soggetto : soggettoUlteriore
 
-		'########## IS-A ########## 
+	'########## DepositoVolontario ########## 
 
-		Soggetto -- Depositante
-		Soggetto -- AutoritaEspropriante
+		DepositoVolontario -- Soggetto : proprietario
+
+	'########## RestituzioneDeposito ########## 
+
+		DepositoVolontario "*" -- "1" Soggetto : soggettiObbligatori
+		DepositoVolontario -- Soggetto : intestatario
 
 @enduml
 -txmi:star
