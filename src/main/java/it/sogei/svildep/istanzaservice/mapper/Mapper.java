@@ -3,10 +3,13 @@ package it.sogei.svildep.istanzaservice.mapper;
 import it.sogei.svildep.istanzaservice.dto.Dto;
 import it.sogei.svildep.istanzaservice.model.Entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public interface Mapper<E extends Entity, D extends Dto> {
+
+    D convertEntityToDtoImpl(E entity);
+
+    E convertDtoToEntityImpl(D dto);
 
     default D convertEntityToDto(E entity) {
         if (entity == null) return null;
@@ -15,12 +18,15 @@ public interface Mapper<E extends Entity, D extends Dto> {
         return dto;
     }
 
-    default List<D> convertEntityToDto(List<E> entities) {
+    default Collection<D> convertEntityToDto(Collection<D> dtos, Collection<E> entities) {
         if (entities == null) return null;
-        List<D> dtos = new ArrayList<>();
         for (E entity : entities) dtos.add(convertEntityToDto(entity));
         return dtos;
     }
+
+    default List<D> convertEntityToDto(List<E> entities) { return (List<D>) convertEntityToDto(new ArrayList<>(), entities); }
+
+    default Set<D> convertEntityToDto(Set<E> entities) { return (Set<D>) convertEntityToDto(new HashSet<>(), entities); }
 
     default E convertDtoToEntity(D dto) {
         if (dto == null) return null;
@@ -29,15 +35,14 @@ public interface Mapper<E extends Entity, D extends Dto> {
         return entity;
     }
 
-    default List<E> convertDtoToEntity(List<D> dtos) {
+    default Collection<E> convertDtoToEntity(Collection<E> entities, Collection<D> dtos) {
         if (dtos == null) return null;
-        List<E> entities = new ArrayList<>();
         for (D dto : dtos) entities.add(convertDtoToEntity(dto));
         return entities;
     }
 
-    D convertEntityToDtoImpl(E entity);
+    default List<E> convertDtoToEntity(List<D> dtos) { return (List<E>) convertDtoToEntity(new ArrayList<>(), dtos); }
 
-    E convertDtoToEntityImpl(D dto);
+    default Set<E> convertDtoToEntity(Set<D> dtos) { return (Set<E>) convertDtoToEntity(new HashSet<>(), dtos); }
 
 }

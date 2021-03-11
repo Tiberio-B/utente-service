@@ -6,14 +6,10 @@ import it.sogei.svildep.istanzaservice.exception.SvildepException;
 import it.sogei.svildep.istanzaservice.mapper.Mapper;
 import it.sogei.svildep.istanzaservice.model.istanza.Istanza;
 import it.sogei.svildep.istanzaservice.repository.IRepository;
-import it.sogei.svildep.istanzaservice.repository.IstanzaRepository;
 import it.sogei.svildep.istanzaservice.service.external.RtsService;
 import it.sogei.svildep.istanzaservice.service.external.SoggettoService;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,14 +19,10 @@ import java.util.List;
 @NoArgsConstructor
 public abstract class IstanzaService<I extends Istanza, D extends IstanzaDto> implements IService<I, D> {
 
-    @Autowired
-    private IRepository<I> repository;
-    @Autowired
-    private Mapper<I, D> mapper;
-    @Autowired
-    private SoggettoService soggettoService;
-    @Autowired
-    private RtsService rtsService;
+    @Autowired private SoggettoService soggettoService;
+    @Autowired private RtsService rtsService;
+    @Autowired private IRepository<I> repository;
+    @Autowired private Mapper<I, D> mapper;
 
     public void prepareInsert(IstanzaDto istanza) throws SvildepException {
         MessageDto soggettoResponse = soggettoService.verificaSoggettiMock(istanza.getRichiedente());

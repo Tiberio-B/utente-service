@@ -13,4 +13,5 @@ public class IstanzaRestituzioneDepositoService extends IstanzaService<IstanzaRe
 
     private final IstanzaRestituzioneDepositoRepository repository;
     private final IstanzaRestituzioneDepositoMapper mapper;
+
 }

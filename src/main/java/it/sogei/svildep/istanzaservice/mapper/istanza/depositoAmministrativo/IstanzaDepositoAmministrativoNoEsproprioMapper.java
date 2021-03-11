@@ -12,6 +12,8 @@ public class IstanzaDepositoAmministrativoNoEsproprioMapper extends IstanzaMappe
     public IstanzaDepositoAmministrativoNoEsproprioDto convertEntityToDtoImpl(IstanzaDepositoAmministrativoNoEsproprio entity) {
         IstanzaDepositoAmministrativoNoEsproprioDto dto = new IstanzaDepositoAmministrativoNoEsproprioDto();
         super.mapPropertyIstanzaEntityToDto(entity, dto);
+        dto.setVersante(getSoggettoMapper().convertEntityToDto(entity.getVersante()));
+        dto.setUlterioreSoggetto(getSoggettoMapper().convertEntityToDto(entity.getUlterioreSoggetto()));
         return dto;
     }
 
@@ -19,6 +21,8 @@ public class IstanzaDepositoAmministrativoNoEsproprioMapper extends IstanzaMappe
     public IstanzaDepositoAmministrativoNoEsproprio convertDtoToEntityImpl(IstanzaDepositoAmministrativoNoEsproprioDto dto) {
         IstanzaDepositoAmministrativoNoEsproprio entity = new IstanzaDepositoAmministrativoNoEsproprio();
         super.mapPropertyIstanzaDtoToEntity(dto, entity);
+        entity.setVersante(getSoggettoMapper().convertDtoToEntity(dto.getVersante()));
+        entity.setUlterioreSoggetto(getSoggettoMapper().convertDtoToEntity(dto.getUlterioreSoggetto()));
         return entity;
     }
 }

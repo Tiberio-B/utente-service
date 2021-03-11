@@ -1,9 +1,7 @@
 package it.sogei.svildep.istanzaservice.mapper.istanza;
 
 import it.sogei.svildep.istanzaservice.dto.istanza.IstanzaDto;
-import it.sogei.svildep.istanzaservice.mapper.DepositoMapper;
-import it.sogei.svildep.istanzaservice.mapper.Mapper;
-import it.sogei.svildep.istanzaservice.mapper.SoggettoMapper;
+import it.sogei.svildep.istanzaservice.mapper.*;
 import it.sogei.svildep.istanzaservice.model.istanza.Istanza;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,18 +14,27 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public abstract class IstanzaMapper<I extends Istanza, D extends IstanzaDto> implements Mapper<I, D> {
 
-    @Autowired
     @Getter
-    private SoggettoMapper soggettoMapper;
-    @Autowired
-    private DepositoMapper depositoMapper;
+    @Autowired private SoggettoMapper soggettoMapper;
+    @Autowired private DepositoMapper depositoMapper;
+    @Autowired private RichiestaMapper richiestaMapper;
+    @Autowired private ProtocolloMapper protocolloMapper;
+    @Autowired private RtsMapper rtsMapper;
+    @Autowired private DocumentoMapper documentoMapper;
 
-    public void mapPropertyIstanzaEntityToDto(Istanza entity, IstanzaDto dto) {
+    public void mapPropertyIstanzaEntityToDto(I entity, D dto) {
+        dto.setQualitaRichiedente(entity.getQualitaRichiedente().name());
+        dto.setCategoriaDeposito(entity.getCategoriaDeposito().name());
+        dto.setStato(entity.getStato().name());
         dto.setRichiedente(soggettoMapper.convertEntityToDto(entity.getRichiedente()));
         dto.setDatiDeposito(depositoMapper.convertEntityToDto(entity.getDatiDeposito()));
+        dto.setDatiRichiesta(richiestaMapper.convertEntityToDto(entity.getDatiRichiesta()));
+        dto.setDatiProtocollo(protocolloMapper.convertEntityToDto(entity.getDatiProtocollo()));
+        dto.setRtsInoltro(rtsMapper.convertEntityToDto(entity.getRtsInoltro()));
+        dto.setAllegati(documentoMapper.convertEntityToDto(entity.getAllegati()));
     }
 
-    public void mapPropertyIstanzaDtoToEntity(IstanzaDto dto, Istanza entity) {
+    public void mapPropertyIstanzaDtoToEntity(D dto, I entity) {
         entity.setRichiedente(soggettoMapper.convertDtoToEntity(dto.getRichiedente()));
         entity.setDatiDeposito(depositoMapper.convertDtoToEntity(dto.getDatiDeposito()));
     }

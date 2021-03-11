@@ -1,7 +1,11 @@
 package it.sogei.svildep.istanzaservice.model.istanza;
 
 import it.sogei.svildep.istanzaservice.model.Soggetto;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class IstanzaDepositoGiudiziario extends Istanza {
 
     private Soggetto versante;

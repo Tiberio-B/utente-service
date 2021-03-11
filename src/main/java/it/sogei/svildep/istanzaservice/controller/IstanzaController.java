@@ -36,6 +36,7 @@ public abstract class IstanzaController<Entity extends Istanza, Dto extends Ista
     public ResponseEntity<Dto> insert(@RequestHeader("authorization") String token, @RequestBody Dto requestDto, BindingResult bindingResult) throws SvildepException {
         // authService.getAuthorizedUser(token, requiredRoles);
         validate(bindingResult);
+        service.prepareInsert(requestDto);
         service.insert(requestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(requestDto);
     }

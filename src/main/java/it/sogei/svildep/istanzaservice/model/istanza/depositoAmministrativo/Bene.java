@@ -12,7 +12,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-
 public class Bene implements Entity {
 
     private Long id;

@@ -12,4 +12,6 @@ import lombok.Setter;
 public class Comune implements Entity {
 
     private Long id;
+
+    private String nome;
 }

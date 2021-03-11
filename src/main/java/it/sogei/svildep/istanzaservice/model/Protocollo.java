@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-
 public class Protocollo implements Entity {
 
     private Long id;

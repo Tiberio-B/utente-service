@@ -13,6 +13,8 @@ public class IstanzaDepositoCauzionaleMapper extends IstanzaMapper<IstanzaDeposi
         super.mapPropertyIstanzaEntityToDto(entity, dto);
         dto.setProprietario(super.getSoggettoMapper().convertEntityToDto(entity.getProprietario()));
         dto.setEnteRichiedente(super.getSoggettoMapper().convertEntityToDto(entity.getEnteRichiedente()));
+        dto.setProprietario(getSoggettoMapper().convertEntityToDto(entity.getProprietario()));
+        dto.setEnteRichiedente(getSoggettoMapper().convertEntityToDto(entity.getEnteRichiedente()));
         return dto;
     }
 
@@ -22,6 +24,8 @@ public class IstanzaDepositoCauzionaleMapper extends IstanzaMapper<IstanzaDeposi
         super.mapPropertyIstanzaDtoToEntity(dto, entity);
         entity.setProprietario(super.getSoggettoMapper().convertDtoToEntity(dto.getProprietario()));
         entity.setEnteRichiedente(super.getSoggettoMapper().convertDtoToEntity(dto.getEnteRichiedente()));
+        entity.setProprietario(getSoggettoMapper().convertDtoToEntity(dto.getProprietario()));
+        entity.setEnteRichiedente(getSoggettoMapper().convertDtoToEntity(dto.getEnteRichiedente()));
         return entity;
     }
 }
