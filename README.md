@@ -1,155 +1,67 @@
-![plot](./z-uml/class-diagram.png)
-![plot](./z-uml/entities-diagram.png)
+# 2.1.37	Servizi Interrogazione SVILDEP
+Si riportano i servizi previsti per essere richiamati dal Portale servizi DAG:
 
-# 2.1.36	Servizi Comuni Istanze e Provvedimento di svincolo/reintroito
-
-Servizi di inserimento istanza di costituzione e di restituzione e inserimento provvedimento di svincolo/reintroito
-
-## 2.1.36.1 Inserimento Istanza Costituzione Deposito Cauzionale
+## 2.1.37.1	Servizio lista depositi per soggetto
 
 ### INPUT
-* ModalitàTrasmissione
-* Richiesta (con codice bollo)
-* Richiedente
-* Proprietario
-* Ente
-* Deposito
-* Allegati
-   
-### DO	
-* verifica presenza tutti soggetti
-* inserimento nuovi soggetti
-* inserimento istanza codice bollo + associazioni ai soggetti
-* iserimento documenti (domanda+allegati) NEL FASCICOLO DELLA RTS ?
+* Codice fiscale Soggetto    
 
 ### OUTPUT
-* Messaggio successo / errore
+In output ci sarà la lista dei depositi su cui il Soggetto possiede un diritto anche per delega. 
 
-## 2.1.36.2 Inserimento Istanza Costituzione Deposito giudiziari 
-   
-### INPUT
-* ModalitàTrasmissione
-* Richiesta
-* Richiedente
-* Versante
-* AutoritàOrdinante
-* SoggettoUlteriore
-* Deposito
-* Allegati
-   
-### DO	
-* verifica presenza tutti soggetti
-* inserimento nuovi soggetti
-* inserimento istanza codice bollo + associazioni ai soggetti
-* iserimento documenti (domanda+allegati) NEL FASCICOLO DELLA RTS ?
+* Codice fiscale Soggetto
+* Tipo diritto Soggetto
+* Codice fiscale Soggetto associato attraverso il tipo diritto
+* Categoria del deposito con informazione su Esproprio
+* Causale/Descrizione del deposito
+* Numero Nazionale
+* Numero RTS competente
+* Importo del deposito
+* Stato del deposito 
+* Data di costituzione del deposito
+* BPF (SI/NO)
+* Fondi Incamerati (SI/NO)
 
-### OUTPUT
-* Messaggio successo / errore
-
-## 2.1.36.3	Servizio Inserimento Istanza costituzione deposito Amministrativo per esproprio
-   
-### INPUT
-* ModalitàTrasmissione
-* Richiesta
-* Richiedente
-* Depositante
-* AutoritàEspropriate
-* Opera
-* BeneEspropriato
-* ProprietariCatastali
-* Deposito
-* Allegati
-   
-### DO	
-* verifica presenza tutti soggetti
-* inserimento nuovi soggetti
-* IF ModalitàTrasmissione = "Manuale"
-			verifica esistenza particelle catastali tramite Servizio Catasto (verifica non bloccante)
-* inserimento istanza codice bollo + associazioni ai soggetti
-* iserimento documenti (domanda+allegati) NEL FASCICOLO DELLA RTS ?
-
-### OUTPUT
-* Messaggio successo / errore
-
-## 2.1.36.4	Servizio Inserimento Istanza costituzione deposito amministrativo diverso da esproprio
-   
-### INPUT
-* ModalitàTrasmissione
-* Richiesta
-* Richiedente
-* Versante
-* AutoritàOrdinate
-* SoggettoUlteriore
-* Deposito
-* Allegati
-   
-### DO
-* verifica presenza tutti soggetti
-* inserimento nuovi soggetti
-* inserimento istanza codice bollo + associazioni ai soggetti
-* iserimento documenti (domanda+allegati) NEL FASCICOLO DELLA RTS ?
-
-### OUTPUT
-* Messaggio successo / errore
-
-## 2.1.36.5	Servizio Inserimento Istanza costituzione deposito volontario
-   
-### INPUT
-* ModalitàTrasmissione
-* Richiesta
-* Richiedente
-* Proprietario
-* Deposito
-* Allegati
- 
-### DO
-* verifica presenza tutti soggetti
-* inserimento nuovi soggetti
-* inserimento istanza codice bollo + associazioni ai soggetti
-* iserimento documenti (domanda+allegati) NEL FASCICOLO DELLA RTS ?
-
-### OUTPUT
-* Messaggio successo / errore
-
-## 2.1.36.6	Servizio Inserimento Istanza restituzione
+## 2.1.37.2	Servizio lista RTS
 
 ### INPUT
-* ModalitàTrasmissione
-* Richiesta (con codice PagoPA IF Deposito)
-* Richiedente
-* Soggetti (max 4)
-* Beneficiario (con modalità pagamento)
-* Deposito
-* Allegati
-   
-### DO
-* verifica presenza tutti soggetti
-* inserimento nuovi soggetti
-* inserimento istanza codice bollo + associazioni ai soggetti + associazioni al deposito
-* Associazione dell’istanza al dettaglio (deposito/beneficiario) del provvedimento di svincolo nel caso sia esistente
-* inserimento modalità pagamento istanza e beneficiario
-* associazione istanza al dettaglio (deposito/beneficiario) del provvedimento di svincolo IF EXISTS
-* iserimento documenti (domanda+allegati) nel fascicolo DEPOSITO
+* Nessuno
 
 ### OUTPUT
-* Messaggio successo / errore
 
-## 2.1.36.7	Servizio Inserimento Decreto Svincolo/reintroito
-   
+In output ci sarà la lista delle RTS con le seguenti informazioni:
+
+* Codice fiscale
+* Denominazione RTS
+* Provincia Competenza RTS.
+
+## 2.1.37.3	Servizio Visualizzazione deposito per numero (anche per controllo di esistenza)
+
 ### INPUT
-* Modalità di trasmissione (Manuale o Portale Servizi DAG)
-* Categoria dei depositi
-* Estremi del provvedimento di svincolo/reintroito 
-* Estremi del provvedimento di espropriazione (solo per amministrativi per esproprio)
-* Lista depositi
-* Lista beneficiari per deposito
-* Dichiarazioni
-* Provvedimento di svincolo/reintroito ed ulteriori documenti in formato pdf    
-
-### DO
-* Verifica nella presenza in banca dati di tutti i soggetti ed inserimento dei nuovi 
-* Inserimento del provvedimento ed associazione ai depositi e ai relativi beneficiari
-* inserimento dei documenti (domanda ed allegati) nel fascicolo della RTS.
+* Numero nazionale Deposito
 
 ### OUTPUT
-* Messaggio successo / errore
+In output saranno ritornate le informazioni di un deposito che verranno concordate.
+
+## 2.1.37.4	Servizio Lista Tesorerie
+
+### INPUT
+* Nessuno
+
+### OUTPUT
+In output ci sarà la lista delle Tesorerie con le seguenti informazioni:
+
+* Codice Tesoreria
+* Denominazione Tesoreria.
+
+## 2.1.37.5	Servizio Lista Conti per Tesoreria
+
+### INPUT
+* Codice Tesoreria
+
+### OUTPUT
+In output ci sarà la lista dei Conti di Tesoreria con le seguenti informazioni:
+
+* Codice Tesoreria
+* Tipo Conto 
+* Numero Conto.

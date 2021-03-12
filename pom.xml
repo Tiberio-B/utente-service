@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>it.sogei.svildep</groupId>
-    <artifactId>istanza-service</artifactId>
+    <artifactId>interrogazione-service</artifactId>
     <version>1.0</version>
-    <name>inserimento-istanze</name>
-    <description>Servizi di inserimento istanza costituzione di deposito</description>
+    <name>interrogazione-service</name>
+    <description>Servizi richiamati dal portale servizi DAG</description>
     <properties>
         <java.version>11</java.version>
     </properties>
