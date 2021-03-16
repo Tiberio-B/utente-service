@@ -67,14 +67,6 @@ public class GeneratoreCasuale extends Random {
 	public String stringaCasuale() {
 		return elementoCasuale(LoremIpsum.VCVCVCV);
 	}
-	
-	public int creditoCasuale(int min, int max) {
-		return nextInt(min, max);
-	}
-	
-	public int expCasuale(int min, int max) {
-		return nextInt(min, max);
-	}
 
 	public String cittaCasuale() {
 		return elementoCasuale(LoremIpsum.CITTA);

@@ -15,11 +15,7 @@ import static it.sogei.svildep.interrogazioneservice.MockDataLoader.databaseRts;
 @RequiredArgsConstructor
 public class RtsService {
 
-    public RtsDto get(Long id) {
-        return databaseRts.get(id);
-    }
+    public RtsDto get(Long id) { return databaseRts.get(id.toString()); }
 
-    public List<RtsDto> getAll() {
-        return new ArrayList<>(databaseRts.values());
-    }
+    public List<RtsDto> getAll() { return new ArrayList<>(databaseRts.values()); }
 }

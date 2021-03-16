@@ -15,11 +15,7 @@ import static it.sogei.svildep.interrogazioneservice.MockDataLoader.databaseTeso
 @RequiredArgsConstructor
 public class TesoreriaService {
 
-    public List<TesoreriaDto> getAll() {
-        return new ArrayList<>(databaseTesoreria.values());
-    }
+    public List<TesoreriaDto> getAll() { return new ArrayList<>(databaseTesoreria.values()); }
 
-    public TesoreriaDto get(String codice) {
-        return databaseTesoreria.get(codice);
-    }
+    public TesoreriaDto get(String codice) { return databaseTesoreria.get(codice); }
 }
