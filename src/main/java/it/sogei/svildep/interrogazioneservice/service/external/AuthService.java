@@ -2,10 +2,8 @@ package it.sogei.svildep.interrogazioneservice.service.external;
 
 import it.sogei.svildep.interrogazioneservice.dto.UserDto;
 import it.sogei.svildep.interrogazioneservice.exception.AuthorizationException;
-import it.sogei.svildep.interrogazioneservice.model.Role;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -17,13 +15,11 @@ public class AuthService extends ExternalService {
     }
 
     @Override
-    String getURL() { return "http://localhost:8080/svildep/api/auth"; }
+    public String getURL() { return "http://localhost:8080/svildep/api/auth"; }
 
-    private String urlAuthUser() { return getURL() + "/authUser"; }
-
-    public UserDto getAuthorizedUserReal(String token, Role... requiredRoles) throws AuthorizationException {
-        HttpEntity request = setRequestAuthorization(token, requiredRoles);
-        UserDto userDTO = getRestTemplate().exchange(urlAuthUser(), HttpMethod.GET, request, UserDto.class).getBody();
+    public UserDto ottieniUtenteAutorizzatoMock(String token, Role... requiredRoles) throws AuthorizationException {
+        // UserDto userDTO = getRestTemplate().exchange(getURL(), HttpMethod.GET, setRequestAuthorization(token, requiredRoles), UserDto.class).getBody();
+        UserDto userDTO = new UserDto("Pippo", "OPERATORE_RTS_ROLE");
         if (userDTO == null) throw new AuthorizationException();
         return userDTO;
     }
@@ -35,8 +31,15 @@ public class AuthService extends ExternalService {
         return new HttpEntity(headers);
     }
 
-    public UserDto getAuthorizedUser(String token, Role... requiredRoles) throws AuthorizationException {
-        return new UserDto("tiberio", "OPERATORE_RTS_ROLE");
+    public enum Role {
+
+        NOME_RUOLO_ROLE;
+
+        public static String toString(Role[] roles) {
+            StringBuilder sb = new StringBuilder();
+            for (Role role : roles) sb.append(role.name()).append(",");
+            return sb.toString();
+        }
     }
 
 }

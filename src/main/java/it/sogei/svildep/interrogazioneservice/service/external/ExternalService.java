@@ -1,16 +1,14 @@
 package it.sogei.svildep.interrogazioneservice.service.external;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.web.client.RestTemplate;
 
 @Getter
+@AllArgsConstructor
 public abstract class ExternalService {
 
     private final RestTemplate restTemplate;
 
-    ExternalService(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
-
-    abstract String getURL();
+    public abstract String getURL();
 }
