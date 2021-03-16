@@ -1,38 +1,34 @@
 package it.sogei.svildep.interrogazioneservice.service;
 
+import it.sogei.svildep.interrogazioneservice.MockDataLoader;
 import it.sogei.svildep.interrogazioneservice.dto.DepositoDto;
-import it.sogei.svildep.interrogazioneservice.mapper.Mapper;
-import it.sogei.svildep.interrogazioneservice.model.Deposito;
-import it.sogei.svildep.interrogazioneservice.repository.IRepository;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static it.sogei.svildep.interrogazioneservice.MockDataLoader.databaseDeposito;
+
 
 @Service
 @Getter
 @RequiredArgsConstructor
-public class DepositoService implements IService<Deposito, DepositoDto> {
+public class DepositoService {
 
-    private final IRepository<Deposito> repository;
-    private final Mapper<Deposito, DepositoDto> mapper;
-
-    @Override
-    public DepositoDto get(Long id) {
-        return null;
-    }
-
-    @Override
-    public List<DepositoDto> getAll() {
-        return null;
-    }
+    public List<DepositoDto> getAll() { return new ArrayList<>(databaseDeposito.values()); }
 
     public DepositoDto get(String numeroNazionale) {
-        return null;
+        return databaseDeposito.get(numeroNazionale);
     }
 
     public List<DepositoDto> getAllByCfSoggetto(String cf) {
-        return null;
+        DepositoDto dep = databaseDeposito.get(cf);
+        List<DepositoDto> ret = new ArrayList<>();
+        ret.add(dep);
+        return ret;
     }
 }

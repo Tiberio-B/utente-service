@@ -1,10 +1,14 @@
 package it.sogei.svildep.interrogazioneservice.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@Builder
 public class DepositoDto extends Dto {
 
     private String cf;
