@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>it.sogei.svildep</groupId>
-    <artifactId>interrogazione-service</artifactId>
+    <artifactId>utente-service</artifactId>
     <version>1.0</version>
-    <name>interrogazione-service</name>
-    <description>Servizi richiamati dal portale servizi DAG</description>
+    <name>utente-service</name>
+    <description>Servizi utente</description>
     <properties>
         <java.version>11</java.version>
     </properties>
