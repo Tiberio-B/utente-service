@@ -14,5 +14,9 @@ public interface Messages {
     String invalidDtoCode = "invalidDto";
     String invalidDtoMessage = "Il corpo della richiesta non è un DTO valido.";
 
+    String invalidStartDateCode = "invalidStartDate";
+    String invalidStartDateMessage = "Il campo 'data inizio' non è una data valida.";
 
+    String invalidEndDateCode = "invalidEndDate";
+    String invalidEndDateMessage = "Il campo 'data fine' non è una data valida.";
 }
