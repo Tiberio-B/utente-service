@@ -40,22 +40,24 @@ public class UtenteService {
     public void update(UtenteDto utenteDto) { databaseUtente.put(utenteDto.getId(), utenteDto); }
 
     public MessageDto nuovaAbilitazione(AbilitazioneDto abilitazioneDto) throws SvildepException {
+        portaleServiziDag.comunicaAperturaAbilitazione(abilitazioneDto);
         UtenteDto utente = get(abilitazioneDto.getUtenteId());
         // if (utenteRepository.findByDataInizioValiditaBeforeAndDataFineValiditaIsNullOrAfter(Date.NOW, Date.NOW)) throw new SvildepException(Messages.abilitazioneUtenteAperta)
-        portaleServiziDag.comunicaAperturaAbilitazione(abilitazioneDto);
         update(utente);
         return new MessageDto(Messages.nuovaAbilitazione, HttpStatus.OK);
     }
 
     public MessageDto chiudiAbilitazione(AbilitazioneDto abilitazioneDto) throws SvildepException {
         UtenteDto utente = get(abilitazioneDto.getUtenteId());
+        portaleServiziDag.comunicaChiusuraAbilitazione(abilitazioneDto);
         utente.setDataFineValidita(abilitazioneDto.getDataFineValidita());
         update(utente);
-        return portaleServiziDag.comunicaChiusuraAbilitazione(abilitazioneDto);
+        return new MessageDto(Messages.chiusuraAbilitazione, HttpStatus.OK);
     }
 
     public MessageDto modificaAbilitazione(AbilitazioneDto abilitazioneDto) throws SvildepException {
         chiudiAbilitazione(abilitazioneDto);
-        return nuovaAbilitazione(abilitazioneDto);
+        nuovaAbilitazione(abilitazioneDto);
+        return new MessageDto(Messages.modificaAbilitazione, HttpStatus.OK);
     }
 }
