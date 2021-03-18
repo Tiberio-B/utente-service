@@ -1,8 +1,7 @@
 package it.sogei.svildep.utenteservice.util;
 
-import it.sogei.svildep.utenteservice.dto.DepositoDto;
-import it.sogei.svildep.utenteservice.dto.RtsDto;
-import it.sogei.svildep.utenteservice.dto.TesoreriaDto;
+import it.sogei.svildep.utenteservice.dto.UtenteDto;
+import it.sogei.svildep.utenteservice.service.external.AuthService;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,12 +30,12 @@ public class GeneratoreCasuale extends Random {
 		return lista.get(nextInt(lista.size()));
 	}
 
-	public int nextInt(int min, int max) {
+	public Integer nextInteger(int min, int max) {
 		return (nextInt(max - min + 1) + min);
 	}
 
-	public boolean coinFlip() {
-		return (nextInt(2) > 0) ? true : false;
+	public Boolean coinFlip() {
+		return nextInt(2) > 0;
 	}
 
 	public String nomeCasuale() {
@@ -54,9 +53,9 @@ public class GeneratoreCasuale extends Random {
 	@SuppressWarnings("deprecation")
 	Date dataCasuale(int giornoMin, int giornoMax, int meseMin, int meseMax, int annoMin,
 			int annoMax) {
-		int giorno = nextInt(giornoMin, giornoMax);
-		int mese = nextInt(meseMin, meseMax);
-		int anno = nextInt(annoMin, annoMax);
+		int giorno = nextInteger(giornoMin, giornoMax);
+		int mese = nextInteger(meseMin, meseMax);
+		int anno = nextInteger(annoMin, annoMax);
 		return new Date(anno - 1900, mese - 1, giorno);
 	}
 	
@@ -72,33 +71,17 @@ public class GeneratoreCasuale extends Random {
 		return elementoCasuale(LoremIpsum.CITTA);
 	}
 
-	public DepositoDto depositoCasuale() {
-		return DepositoDto.builder()
+	public UtenteDto utenteCasuale(int id) {
+		return UtenteDto.builder()
+				.id(String.valueOf(id))
 				.cf(stringaCasuale())
-				.tipoDiritto(stringaCasuale())
-				.categoria(stringaCasuale())
-				.causale(stringaCasuale())
-				.numeroNazionale(stringaCasuale())
-				.rts(stringaCasuale())
-				.importo(stringaCasuale())
-				.stato(stringaCasuale())
-				.dataCostituzione(stringaCasuale())
-				.bpf(stringaCasuale())
-				.fondiIncamerati(stringaCasuale())
-				.build();
-	}
-
-	public TesoreriaDto tesoreriaCasuale() {
-		return TesoreriaDto.builder()
-				.codice(stringaCasuale())
-				.tipoConto(stringaCasuale())
-				.numeroConto(stringaCasuale())
-				.build();
-	}
-
-	public RtsDto rtsCasuale() {
-		return RtsDto.builder()
-				.nome(stringaCasuale())
+				.nome(nomeCasuale())
+				.cognome(cognomeCasuale())
+				.dataInizioValidita(dataCasuale().toString())
+				.dataFineValidita(dataCasuale().toString())
+				.abilitato(coinFlip().toString())
+				.ruolo(AuthService.Role.UTENTE_ROLE.toString())
+				.rtsId(nextInteger(0, 100).toString())
 				.build();
 	}
 }
