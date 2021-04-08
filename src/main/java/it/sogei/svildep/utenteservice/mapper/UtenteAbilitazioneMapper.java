@@ -2,7 +2,7 @@ package it.sogei.svildep.utenteservice.mapper;
 
 import it.sogei.svildep.utenteservice.dto.AbilitazioneDto;
 import it.sogei.svildep.utenteservice.dto.UtenteAnagraficaDto;
-import it.sogei.svildep.utenteservice.model.FlagSN;
+import it.sogei.svildep.utenteservice.model.enums.FlagSN;
 import it.sogei.svildep.utenteservice.model.Rts;
 import it.sogei.svildep.utenteservice.model.Ruolo;
 import it.sogei.svildep.utenteservice.model.Utente;

@@ -2,7 +2,6 @@ package it.sogei.svildep.utenteservice.service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 import it.sogei.svildep.utenteservice.dto.*;
 import it.sogei.svildep.utenteservice.mapper.UtenteAbilitazioneMapper;
@@ -14,7 +13,7 @@ import it.sogei.svildep.utenteservice.exception.Messages;
 import it.sogei.svildep.utenteservice.exception.SvildepException;
 import it.sogei.svildep.utenteservice.mapper.InsertUtenteMapper;
 import it.sogei.svildep.utenteservice.mapper.UtenteMapper;
-import it.sogei.svildep.utenteservice.model.FlagSN;
+import it.sogei.svildep.utenteservice.model.enums.FlagSN;
 import it.sogei.svildep.utenteservice.model.Utente;
 import it.sogei.svildep.utenteservice.service.external.AnagrafeUnicaService;
 import it.sogei.svildep.utenteservice.service.external.PortaleServiziDag;
