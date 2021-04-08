@@ -1,6 +1,5 @@
 package it.sogei.svildep.utenteservice.exception;
 
-import it.sogei.svildep.utenteservice.dto.MessageDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,13 +9,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ExceptionAdvisor {
 
 	@ExceptionHandler(SvildepException.class)
-	public ResponseEntity<MessageDto> handleException(SvildepException e){
-		return ResponseEntity.status(e.getMessageDto().getStatus()).body(new MessageDto(e.getMessage()));
+	public ResponseEntity<String> handleException(SvildepException ex) {
+		return ResponseEntity.status(ex.getStatus()).body(ex.getMessage());
 	}
- 
+
 	@ExceptionHandler(Exception.class)
-    public ResponseEntity<MessageDto> handleException(Exception e){
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MessageDto(e.getMessage()));
-    }
+	public ResponseEntity<String> handleException(Exception ex) {
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+	}
 
 }

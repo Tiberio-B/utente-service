@@ -1,20 +1,23 @@
 package it.sogei.svildep.utenteservice.service.external;
 
-import it.sogei.svildep.utenteservice.dto.AbilitazioneDto;
-import it.sogei.svildep.utenteservice.dto.MessageDto;
-import it.sogei.svildep.utenteservice.exception.Messages;
-import it.sogei.svildep.utenteservice.exception.SvildepException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import it.sogei.svildep.utenteservice.dto.AbilitazioneDto;
+import it.sogei.svildep.utenteservice.dto.MessageDto;
+import it.sogei.svildep.utenteservice.exception.Messages;
+import it.sogei.svildep.utenteservice.exception.SvildepException;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 @Service
-public class PortaleServiziDag extends ExternalService {
+@Getter
+@RequiredArgsConstructor
+public class PortaleServiziDag implements ExternalService {
 
-    PortaleServiziDag(RestTemplate restTemplate) {
-        super(restTemplate);
-    }
-
+	private final RestTemplate restTemplate;
+	
     @Override
     public String getURL() { return "http://localhost:8080/svildep/api/portaleServiziDag"; }
 
@@ -33,5 +36,6 @@ public class PortaleServiziDag extends ExternalService {
         if (response.isError()) throw new SvildepException(response);
         return response;
     }
+
 
 }

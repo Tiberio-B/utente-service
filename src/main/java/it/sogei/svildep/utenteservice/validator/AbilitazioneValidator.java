@@ -1,11 +1,11 @@
 package it.sogei.svildep.utenteservice.validator;
 
-import it.sogei.svildep.utenteservice.dto.AbilitazioneDto;
-import it.sogei.svildep.utenteservice.dto.UtenteDto;
-import it.sogei.svildep.utenteservice.exception.Messages;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
+import it.sogei.svildep.utenteservice.dto.AbilitazioneDto;
+import it.sogei.svildep.utenteservice.exception.Messages;
 
 @Component
 public class AbilitazioneValidator implements Validator {

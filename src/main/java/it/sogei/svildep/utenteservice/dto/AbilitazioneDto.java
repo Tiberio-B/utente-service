@@ -9,12 +9,13 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @Builder
-public class AbilitazioneDto extends Dto {
+public class AbilitazioneDto extends SvildepDto {
 
     private String utenteId;
     private String rtsId;
     private String ruolo;
     private String dataInizioValidita;
     private String dataFineValidita;
+    private String codiceFiscale;
 
 }

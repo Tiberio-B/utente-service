@@ -1,14 +1,10 @@
 package it.sogei.svildep.utenteservice.service.external;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.springframework.web.client.RestTemplate;
 
-@Getter
-@AllArgsConstructor
-public abstract class ExternalService {
+public interface ExternalService {
 
-    private final RestTemplate restTemplate;
+    RestTemplate getRestTemplate();
 
-    public abstract String getURL();
+    String getURL();
 }
