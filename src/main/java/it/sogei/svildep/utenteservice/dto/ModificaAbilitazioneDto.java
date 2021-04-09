@@ -5,19 +5,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @Builder
-public class AbilitazioneDto extends SvildepDto {
-
+public class ModificaAbilitazioneDto {
+    @NotNull
     private String utenteId;
+    private String ruoloId;
     private String rtsId;
-    private String ruolo;
-    private String dataInizioValidita;
-    private String dataFineValidita;
-    private String codiceFiscale;
-
 }

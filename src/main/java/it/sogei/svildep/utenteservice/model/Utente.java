@@ -11,6 +11,7 @@ import javax.persistence.*;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @Getter @Setter
+@Entity
 @Table(name = "D_UTENTI")
 public class Utente extends BaseEntity {
 
@@ -30,15 +31,17 @@ public class Utente extends BaseEntity {
 	@Column(name = "DATA_FINE")
 	private LocalDate dataFine;
 	@Column(name = "FLAG_ABILITATO_SN")
+	@Enumerated(EnumType.STRING)
 	private FlagSN flagAbilitazione;
 	@ManyToOne
 	@JoinColumn(name = "FK1_RUOLI_UTENTI")
 	private Ruolo ruolo;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "FK1_RTS_UTENTI")
 	private Rts rts;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "FK1_TITOLI_UTENTI")
-	private String titolo;
+	private Titolo titolo;
 	
 }
+

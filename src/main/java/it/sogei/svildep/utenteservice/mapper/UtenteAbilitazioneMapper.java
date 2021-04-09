@@ -6,7 +6,13 @@ import it.sogei.svildep.utenteservice.model.enums.FlagSN;
 import it.sogei.svildep.utenteservice.model.Rts;
 import it.sogei.svildep.utenteservice.model.Ruolo;
 import it.sogei.svildep.utenteservice.model.Utente;
+import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 
+@Component
+@Primary
+@NoArgsConstructor
 public class UtenteAbilitazioneMapper {
 
 

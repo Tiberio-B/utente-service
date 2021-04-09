@@ -1,6 +1,7 @@
-package it.sogei.svildep.utenteservice.service.external;
+package it.sogei.svildep.adapter;
 
 import it.sogei.svildep.utenteservice.dto.UtenteAnagraficaDto;
+import it.sogei.svildep.utenteservice.service.external.ExternalService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -16,7 +17,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Getter
-public class AnagrafeUnicaService implements ExternalService {
+public class AnagrafeUnicaAdapter implements ExternalService {
 	
 	  private final RestTemplate restTemplate;
 	  
@@ -28,15 +29,21 @@ public class AnagrafeUnicaService implements ExternalService {
 
 	  //Aggiungere controllo sul tipo di ritorno (optional User) se non torna nulla lo blocco qui e aggiungo messaggio
 
-	  public UtenteAnagraficaDto searchUtenteByCf(String codiceFiscale){
+	  public UtenteAnagraficaDto searchUtenteByCf(String codiceFiscale) {
 
-			ResponseEntity<UtenteAnagraficaDto> risposta = restTemplate.exchange(URL + PATH_UTENTI, HttpMethod.POST, new HttpEntity<>(codiceFiscale), ResponseEntity.class).getBody();
-			if(risposta.getStatusCode().isError()){
-				return null;
-			}
-			else {
-				return risposta.getBody();
-			}
+		ResponseEntity<UtenteAnagraficaDto> risposta = restTemplate.exchange(URL + PATH_UTENTI, HttpMethod.POST, new HttpEntity<>(codiceFiscale), ResponseEntity.class).getBody();
+		if(risposta.getStatusCode().isError()){
+			return null;
+		}
+		else {
+			return risposta.getBody();
+		}
+
+		  /*UtenteAnagraficaDto utente = new UtenteAnagraficaDto();
+		  utente.setCodiceFiscale(codiceFiscale);
+		  utente.setNome("Arisa");
+		  utente.setCognome("Viola");*/
+
 	  }
 
 }

@@ -5,19 +5,22 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-
+import java.util.Set;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-@Getter @Setter
+@Getter
+@Setter
 @Entity
-@Table(name = "D_RUOLI")
-public class Ruolo extends BaseEntity {
+@Table(name = "D_REGIONI")
+public class Regione extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    @Column(name = "PK_SEQU_ID_RUOLO")
+    @Column(name = "PK_SEQU_ID_REGIONE")
     private Long id;
-    @Column(name = "DESC_RUOLO")
-    private String descrizione;
+    @Column(name = "DESC_DENOMINAZIONE_REGIONE")
+    private String denominazioneRegione;
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "regione")
+    private Set<Provincia> listaProvince;
 }

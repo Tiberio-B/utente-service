@@ -22,5 +22,6 @@ public class Titolo extends BaseEntity{
     @Column(name = "DESC_DESCRIZIONE_TITOLO")
     private String descrizione;
     @Column(name = "CODI_CODICE_TITOLO")
+    @Enumerated(EnumType.STRING)
     private FlagTitolo codice;
 }

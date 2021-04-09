@@ -14,10 +14,10 @@ public interface EntityToDtoMapper<E extends BaseEntity, D extends SvildepDto> {
     default D mapEntityToDto(E entity) {
         if (entity == null) return null;
         D dto = mapEntityToDtoImpl(entity);
-        dto.setUtenteAggiornamentoId(String.valueOf(entity.getIdUtenteAggiornamento()));
+      /*  dto.setUtenteAggiornamentoId(String.valueOf(entity.getIdUtenteAggiornamento()));
         dto.setUtenteInserimentoId(String.valueOf(entity.getIdUtenteInserimento()));
         dto.setTimestampAggiornamento(String.valueOf(entity.getTimestampAggiornamento()));
-        dto.setTimestampInserimento(String.valueOf(entity.getTimestampInserimento()));
+        dto.setTimestampInserimento(String.valueOf(entity.getTimestampInserimento()));*/
         return dto;
     }
 

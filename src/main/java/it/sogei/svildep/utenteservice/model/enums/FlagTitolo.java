@@ -6,4 +6,5 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum FlagTitolo {
+    dot
 }
