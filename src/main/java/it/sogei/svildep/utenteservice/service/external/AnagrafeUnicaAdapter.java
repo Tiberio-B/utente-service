@@ -1,4 +1,4 @@
-package it.sogei.svildep.adapter;
+package it.sogei.svildep.utenteservice.service.external;
 
 import it.sogei.svildep.utenteservice.dto.UtenteAnagraficaDto;
 import it.sogei.svildep.utenteservice.service.external.ExternalService;

@@ -1,7 +1,6 @@
 package it.sogei.svildep.utenteservice.mapper;
 
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +15,11 @@ public interface DtoToEntityMapper<E extends BaseEntity, D extends SvildepDto> {
     default E mapDtoToEntity(D dto) throws SvildepException {
         if (dto == null) return null;
         E entity;
-        try { entity = mapDtoToEntityImpl(dto);
-        } catch (RuntimeException ex) { throw new SvildepException(ex); }
+        try {
+            entity = mapDtoToEntityImpl(dto);
+        } catch (RuntimeException ex) {
+            throw new SvildepException(ex);
+        }
         return entity;
     }
 

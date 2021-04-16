@@ -1,16 +1,14 @@
 package it.sogei.svildep.utenteservice.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@Builder
+@SuperBuilder
+@NoArgsConstructor
 public class AbilitazioneDto extends SvildepDto {
 
     private String utenteId;

@@ -1,12 +1,12 @@
 package it.sogei.svildep.utenteservice.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
-
+@SuperBuilder
+@NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @Getter @Setter
 @Entity

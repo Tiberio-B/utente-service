@@ -20,40 +20,25 @@ public class UtenteMapper implements Mapper<Utente, UtenteDto> {
 
     @Override
     public Utente mapDtoToEntityImpl(UtenteDto dto) throws RuntimeException {
-        Utente utente = new Utente();
-        utente.setId(Long.parseLong(dto.getId()));
-        utente.setCodiceFiscale(dto.getCf());
-        utente.setNome(dto.getNome());
-        utente.setCognome(dto.getCognome());
-        utente.setFlagAbilitazione(FlagSN.valueOf(dto.getAbilitato()));
-        utente.setDataInizio(LocalDate.parse(dto.getDataInizioValidita()));
-        utente.setDataFine(LocalDate.parse(dto.getDataFineValidita()));
-        Ruolo ruolo = new Ruolo();
 
-        ruolo.setId(Long.parseLong(dto.getRuoloId()));
-        utente.setRuolo(ruolo);
 
-        Rts rts = new Rts();
-        rts.setId(Long.parseLong(dto.getRtsId()));
-        utente.setRts(rts);
-        return utente;
+        return Utente.builder().id(Long.parseLong(dto.getId())).codiceFiscale(dto.getCodiceFiscale()).nome(dto.getNome()).cognome(dto.getCognome()).
+                flagAbilitazione(FlagSN.valueOf(dto.getAbilitato())).dataInizio(LocalDate.parse(dto.getDataInizioValidita())).
+                dataFine(LocalDate.parse(dto.getDataFineValidita())).
+                ruolo(Ruolo.builder().id(Long.parseLong(dto.getRuoloId())).build()).
+                rts(Rts.builder().id(Long.parseLong(dto.getRtsId())).build()).build();
+
+
     }
 
     @Override
     public UtenteDto mapEntityToDtoImpl(Utente entity) {
-        UtenteDto dto = new UtenteDto();
-        dto.setId(String.valueOf(entity.getId()));
-        dto.setCf(entity.getCodiceFiscale());
-        dto.setNome(entity.getNome());
-        dto.setCognome(entity.getCognome());
-        dto.setAbilitato(String.valueOf(entity.getFlagAbilitazione()));
+        return UtenteDto.builder().id(String.valueOf(entity.getId())).codiceFiscale(entity.getCodiceFiscale()).nome(entity.getNome()).
+                cognome(entity.getNome()).abilitato(String.valueOf(entity.getFlagAbilitazione())).
+                ruoloId(String.valueOf(entity.getRuolo().getId())).rtsId(String.valueOf(entity.getRts().getId())).build();
 
-        dto.setRuoloId(String.valueOf(entity.getRuolo().getId()));
-
-        dto.setRtsId(String.valueOf(entity.getRts().getId()));
-        return dto;
     }
-    
+
 
 }
 

@@ -17,39 +17,24 @@ public class UtenteAbilitazioneMapper {
 
 
     public Utente mapDtoToEntityImpl(AbilitazioneDto abilitazionedto, UtenteAnagraficaDto utenteAnagrafica) throws RuntimeException {
-        Utente utente = new Utente();
-
-        utente.setCodiceFiscale(utenteAnagrafica.getCodiceFiscale());
-        utente.setNome(utenteAnagrafica.getNome());
-        utente.setCognome(utenteAnagrafica.getCognome());
-
-        utente.setFlagAbilitazione(FlagSN.S);
-        Ruolo ruolo = new Ruolo();
-
-        ruolo.setId(Long.parseLong(abilitazionedto.getRuolo()));
-        utente.setRuolo(ruolo);
-
-        Rts rts = new Rts();
-        rts.setId(Long.parseLong(abilitazionedto.getRtsId()));
-        utente.setRts(rts);
 
 
-        return utente;
+        return Utente.builder().codiceFiscale(utenteAnagrafica.getCodiceFiscale()).nome(utenteAnagrafica.getNome())
+                .cognome(utenteAnagrafica.getCognome()).flagAbilitazione(FlagSN.S).
+                        ruolo(Ruolo.builder().id(Long.parseLong(abilitazionedto.getRuolo())).build()).
+                        rts(Rts.builder().id(Long.parseLong(abilitazionedto.getRtsId())).build())
+                .build();
+
     }
+
     public Utente mapDtoToEntity(AbilitazioneDto abilitazionedto, Utente utente) throws RuntimeException {
 
-        utente.setFlagAbilitazione(FlagSN.S);
-        Ruolo ruolo = new Ruolo();
 
-        ruolo.setId(Long.parseLong(abilitazionedto.getRuolo()));
-        utente.setRuolo(ruolo);
+        return Utente.builder().flagAbilitazione(FlagSN.S).
+                ruolo(Ruolo.builder().id(Long.parseLong(abilitazionedto.getRuolo())).build()).
+                rts(Rts.builder().id(Long.parseLong(abilitazionedto.getRtsId())).build())
+                .build();
 
-        Rts rts = new Rts();
-        rts.setId(Long.parseLong(abilitazionedto.getRtsId()));
-        utente.setRts(rts);
-
-
-        return utente;
     }
 
 
