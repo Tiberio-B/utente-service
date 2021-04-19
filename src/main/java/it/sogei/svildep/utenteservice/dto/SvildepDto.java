@@ -16,7 +16,6 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public abstract class SvildepDto {
 
-
 	private String utenteInserimentoId;
 
 	private String timestampInserimento;

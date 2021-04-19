@@ -31,7 +31,7 @@ public class AnagrafeUnicaAdapter implements ExternalService {
 
 	  public UtenteAnagraficaDto searchUtenteByCf(String codiceFiscale) {
 
-		ResponseEntity<UtenteAnagraficaDto> risposta = restTemplate.exchange(URL + PATH_UTENTI, HttpMethod.POST, new HttpEntity<>(codiceFiscale), ResponseEntity.class).getBody();
+		ResponseEntity<UtenteAnagraficaDto> risposta = restTemplate.exchange(URL + PATH_UTENTI, HttpMethod.POST, new HttpEntity<>(codiceFiscale), UtenteAnagraficaDto.class);
 		if(risposta.getStatusCode().isError()){
 			return null;
 		}
